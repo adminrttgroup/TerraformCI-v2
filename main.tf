@@ -87,10 +87,10 @@ resource "azurerm_network_security_group" "nsg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "3389"
-    source_address_prefix      = azurerm_subnet.subnet_2.address_prefixes
+    source_address_prefix      = azurerm_subnet.subnet_2.address_prefixes[0]
     destination_address_prefix = "*"
   }
- security_rule {
+  security_rule {
     name                       = "DenyRDP"
     priority                   = 101
     direction                  = "Inbound"
@@ -163,7 +163,7 @@ resource "azurerm_storage_account" "storage" {
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
   account_replication_type = "GRS"
-  tags                = var.tags
+  tags                     = var.tags
 }
 # ============================================================
 # Bastion Host
@@ -177,8 +177,8 @@ resource "azurerm_bastion_host" "bastion" {
     name                 = "configuration"
     subnet_id            = azurerm_subnet.subnet_2.id
     public_ip_address_id = azurerm_public_ip.pip.id
-  
-}
+
+  }
 }
 
 
