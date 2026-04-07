@@ -13,9 +13,9 @@ terraform {
 
   # Terraform Cloud backend — workspace settings managed in TFC UI
   cloud {
-    organization = "your-tfc-organization"
+    organization = "rttgroup1"
     workspaces {
-      name = "your-workspace-name"
+      name = "TerraformCI-v2"
     }
   }
 }
