@@ -14,6 +14,13 @@ variable "resource_group_name" {
   default     = "rg-windows-vm"
 }
 
+
+variable "bastion_name" {
+  description = "Name of the Bastion Host"
+  type        = string
+  default     = "bastion-host"
+}
+
 variable "vm_name" {
   description = "Name of the Windows Server VM"
   type        = string
