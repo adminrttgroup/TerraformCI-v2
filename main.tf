@@ -79,6 +79,9 @@ resource "azurerm_network_security_group" "nsg" {
   resource_group_name = azurerm_resource_group.rg.name
   tags                = var.tags
 
+
+
+
   security_rule {
     name                       = "Allow-RDP_for-Bastion"
     priority                   = 100
@@ -165,6 +168,18 @@ resource "azurerm_storage_account" "storage" {
   account_replication_type = "GRS"
   tags                     = var.tags
 }
+resource "azurerm_storage_account" "storage1" {
+  name                     = "stgyrnmnastya0407202626"
+  resource_group_name      = azurerm_resource_group.rg.name
+  location                 = azurerm_resource_group.rg.location
+  account_tier             = "Standard"
+  account_replication_type = "GRS"
+  tags                     = var.tags
+}
+
+
+
+
 # ============================================================
 # Bastion Host
 # ============================================================
