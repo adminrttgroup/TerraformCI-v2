@@ -2,20 +2,31 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "winServerName": { "type": "string" },
-    "adminUsername": { "type": "string" },
-    "adminPassword": { "type": "securestring" },
-    "virtualNetworkName": { "type": "string" },
-    "location": { "type": "string" }
+    "winServerName": {
+      "type": "string"
+    },
+    "adminUsername": {
+      "type": "string"
+    },
+    "adminPassword": {
+      "type": "securestring"
+    },
+    "virtualNetworkName": {
+      "type": "string",
+      "defaultValue": "asclab-vnet"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
   },
   "variables": {
     "vmName": "[parameters('winServerName')]",
     "publicIPAddressName": "[concat(variables('vmName'), '-pip')]",
     "nicName": "[concat(variables('vmName'), '-nic')]",
-    "subnetName": "Default"
+    "subnetName": "default"
   },
   "resources": [
-
     {
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2021-02-01",
@@ -31,7 +42,6 @@
         }
       }
     },
-
     {
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2021-02-01",
@@ -57,7 +67,6 @@
         ]
       }
     },
-
     {
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2021-03-01",
